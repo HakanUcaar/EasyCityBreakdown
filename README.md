@@ -98,7 +98,7 @@ Turkey city breakdowns and outages.
 
 ## Usage
 
-### *Get Currencies
+### *Get Outages
 ``` csharp
   Console.WriteLine(Düzce.Information);
   CityBreakdown.TurkeyAdapter.GetBreakdowns<Düzce>().ForEach(x => Console.WriteLine(x));
