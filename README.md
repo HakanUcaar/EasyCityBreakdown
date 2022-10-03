@@ -112,3 +112,22 @@ Output
 (14.09.2022 09:00:00, 14.09.2022 10:00:00, KESİNTİ ÖNLEME AMAÇLI GENEL BAKIM ONARIM ÇALIŞMASI-Planlı Kesinti No:35344, MERKEZ, 5736. SK.)
 (14.09.2022 09:00:00, 14.09.2022 10:00:00, KESİNTİ ÖNLEME AMAÇLI GENEL BAKIM ONARIM ÇALIŞMASI-Planlı Kesinti No:35344, MERKEZ, 5739. SK.)
 ```
+
+### *Some Functions
+``` csharp
+var city = CityBreakdown.TurkeyAdapter.FindCity(IpAddress.From(("xx.xxx.xxx.xx")));
+Console.WriteLine(city);   
+
+Output
+
+İl : İstanbul - Plaka : 34 - lat/lng : 41,01 , 28,9603
+```
+
+``` csharp
+var city = CityBreakdown.TurkeyAdapter.FindCity("İzmir");
+Console.WriteLine(city);
+
+Output
+
+İl : İzmir - Plaka : 35 - lat/lng : 38,4127 , 27,1384
+```
