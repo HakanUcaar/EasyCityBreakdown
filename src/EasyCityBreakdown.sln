@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyCityBreakdown", "EasyCityBreakdown\EasyCityBreakdown.csproj", "{CF94D6EB-F177-4684-A384-9C6965513C28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyCityBreakdown.Samples", "EasyCityBreakdown.Test\EasyCityBreakdown.Samples.csproj", "{7FFED6B8-02AA-434A-919F-B61FC6797ADA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF94D6EB-F177-4684-A384-9C6965513C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF94D6EB-F177-4684-A384-9C6965513C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF94D6EB-F177-4684-A384-9C6965513C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF94D6EB-F177-4684-A384-9C6965513C28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FFED6B8-02AA-434A-919F-B61FC6797ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FFED6B8-02AA-434A-919F-B61FC6797ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FFED6B8-02AA-434A-919F-B61FC6797ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FFED6B8-02AA-434A-919F-B61FC6797ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92EDA6A3-E0BC-4319-B220-77117091DB2F}
+	EndGlobalSection
+EndGlobal
