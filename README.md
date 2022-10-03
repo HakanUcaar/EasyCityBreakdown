@@ -1,5 +1,5 @@
 # EasyCityBreakdown
-Some city breakdowns. Only Turkey for now
+Turkey city breakdowns and outages.
 
 <details>
 	<summary>Todo</summary>
