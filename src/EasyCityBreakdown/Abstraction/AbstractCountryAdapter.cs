@@ -49,15 +49,22 @@ namespace EasyCityBreakdown.Abstraction
 
             return city.GetBreakdowns();
         }
+        public virtual Task<List<Breakdown>> GetBreakdownsAsync(ICity city)
+        {
+            if (!Cities.Any(x => x == city))
+            {
+                throw new CityNotFoundException();
+            }
+
+            return Task.Run(()=>city.GetBreakdowns());
+        }
         public virtual List<Breakdown> GetBreakdowns<T>() where T : ICity
         {
-            //City city = ((ICity)Activator.CreateInstance(typeof(T))).GetInfo();
-            //if (!Cities.Any(x => x == city))
-            //{
-            //    throw new CityNotFoundException();
-            //}
-
             return new List<Breakdown>();
+        }
+        public virtual Task<List<Breakdown>> GetBreakdownsAsync<T>() where T : ICity
+        {
+            return Task.Run(()=>new List<Breakdown>());
         }
     }
 }
