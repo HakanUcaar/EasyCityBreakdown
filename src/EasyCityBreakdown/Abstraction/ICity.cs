@@ -10,5 +10,6 @@ namespace EasyCityBreakdown.Abstraction
     {
         City Info { get; set; }
         public abstract List<Breakdown> GetBreakdowns();
+        public abstract Task<List<Breakdown>> GetBreakdownsAsync();
     }
 }

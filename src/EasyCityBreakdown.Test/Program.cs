@@ -2,6 +2,7 @@
 using EasyCityBreakdown.Common.Cities.Turkey;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EasyCityBreakdown.Test
 {
@@ -9,15 +10,15 @@ namespace EasyCityBreakdown.Test
     {
         static void Main(string[] args)
         {
+            GetAsynchronBreakdowns();
             //GetBreakdowns();
-            GetCityByIpAddress();
-            GetCityByName();
+            //GetCityByIpAddress();
+            //GetCityByName();
             Console.ReadLine();
         }
 
         static void GetBreakdowns()
         {
-            Console.WriteLine(İzmir.Information);
             var breakdowns = CityBreakdown.TurkeyAdapter.GetBreakdowns<İzmir>();
             if (breakdowns.Any())
             {
@@ -28,9 +29,30 @@ namespace EasyCityBreakdown.Test
                 Console.WriteLine("Hiç veri bulunamadı");
             }
         }
+
+        static void GetAsynchronBreakdowns()
+        {
+            var izmir = CityBreakdown.TurkeyAdapter.GetBreakdownsAsync<İzmir>();
+            var manisa = CityBreakdown.TurkeyAdapter.GetBreakdownsAsync<Manisa>();
+            var aydın = CityBreakdown.TurkeyAdapter.GetBreakdownsAsync<Aydın>();
+
+            Console.WriteLine(İzmir.Information);
+            izmir.Result.Take(2).ToList().ForEach(x => Console.WriteLine(x));
+            Console.WriteLine("-----------------");
+
+            Console.WriteLine(Manisa.Information);
+            manisa.Result.Take(2).ToList().ForEach(x => Console.WriteLine(x));
+            Console.WriteLine("-----------------");
+
+            Console.WriteLine(İzmir.Information);
+            izmir.Result.Take(2).ToList().ForEach(x => Console.WriteLine(x));
+            Console.WriteLine("-----------------");
+        }
+
+
         static void GetCityByIpAddress()
         {
-            var city = CityBreakdown.TurkeyAdapter.FindCity(IpAddress.From(("xx.xxx.xxx.xx")));
+            var city = CityBreakdown.TurkeyAdapter.FindCity(IpAddress.From(("xxx.xxx.xxx.xxx")));
             Console.WriteLine(city);                                  
         }
 

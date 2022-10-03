@@ -11,6 +11,10 @@ namespace EasyCityBreakdown.Abstraction
     {
         public City Info { get; set; }
         public abstract List<Breakdown> GetBreakdowns();
+        public virtual Task<List<Breakdown>> GetBreakdownsAsync()
+        {
+            return Task.Run(() => GetBreakdowns());
+        }
     }
 
     public abstract class AbstractCity<T> : AbstractCity where T : AbstractCity

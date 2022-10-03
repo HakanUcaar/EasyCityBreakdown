@@ -105,5 +105,9 @@ namespace EasyCityBreakdown.Adapters
         {
             return ((ICity)Activator.CreateInstance<T>()).GetBreakdowns();
         }
+        public override Task<List<Breakdown>> GetBreakdownsAsync<T>()
+        {
+            return ((ICity)Activator.CreateInstance<T>()).GetBreakdownsAsync();
+        }
     }
 }
