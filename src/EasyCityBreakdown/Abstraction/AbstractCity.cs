@@ -1,4 +1,5 @@
 ﻿using EasyCityBreakdown.Common.Cities.Turkey;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,11 @@ namespace EasyCityBreakdown.Abstraction
         {
             return Task.Run(() => GetBreakdowns());
         }
+
+        public string GetJsonBreakdowns()
+        {
+            return JsonConvert.SerializeObject(GetBreakdowns(),Formatting.Indented);
+        }
     }
 
     public abstract class AbstractCity<T> : AbstractCity where T : AbstractCity
@@ -24,4 +30,5 @@ namespace EasyCityBreakdown.Abstraction
             return Activator.CreateInstance<T>();
         }
     }
+    
 }

@@ -14,7 +14,8 @@ namespace EasyCityBreakdown.Test
             //GetBreakdowns();
             //GetCityByIpAddress();
             //GetCityByName();
-            GetCityGeoLocation();
+            //GetCityGeoLocation();
+            GetJsonData();
             Console.ReadLine();
         }
 
@@ -50,18 +51,19 @@ namespace EasyCityBreakdown.Test
         }
         static void GetCityByIpAddress()
         {
-            var city = CityBreakdown.TurkeyAdapter.FindCity(IpAddress.From(("xxx.xxx.xxx.xxx")));
-            Console.WriteLine(city);                                  
+            CityBreakdown.TurkeyAdapter.FindCity(IpAddress.From(("xxx.xxx.xxx.xxx"))).Info.ToConsole();                    
         }
         static void GetCityByName()
         {
-            var city = CityBreakdown.TurkeyAdapter.FindCity("İzmir");
-            Console.WriteLine(city);
+            CityBreakdown.TurkeyAdapter.FindCity("İzmir").Info.ToConsole();
         }
         static void GetCityGeoLocation()
         {
-            var city = CityBreakdown.TurkeyAdapter.FindCity("Ankara");
-            Console.WriteLine(city.GeoLocation);
+            CityBreakdown.TurkeyAdapter.FindCity("Ankara").Info.GeoLocation.ToConsole();
+        }
+        static void GetJsonData()
+        {
+            CityBreakdown.TurkeyAdapter.FindCity("İzmir").GetJsonBreakdowns().ToConsole();            
         }
     }
 }
