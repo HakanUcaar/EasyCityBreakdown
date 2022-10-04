@@ -197,5 +197,38 @@ Output
     "Region": "YENİ FOÇA FEVZİ ÇAKMAK MAHALLESİ ORUÇ REİS CADDESİ BİR BÖLÜMÜ, HİLAL, DOĞAN, ÇİNGİL, SICAKDERE, SOĞUKSU, SUSAM SOKAKLARI VE CİVARLARI"
   }
 ]
-
 ```
+
+### *Setting
+``` csharp
+CityBreakdown.TurkeyAdapter.Setting.Limit = 3;
+CityBreakdown.TurkeyAdapter.Setting.JsonDateFormat = "dd.MM.yyyy HH:mm";
+CityBreakdown.TurkeyAdapter.FindCity("İzmir").GetJsonBreakdowns().ToConsole();
+```
+```
+Output
+[
+  {
+    "StartDate": "05.10.2022 09:00",
+    "EndDate": "05.10.2022 17:00",
+    "Reason": "ŞEBEKE İŞLETMECİSİ",
+    "District": "BAYRAKLI",
+    "Region": "OSMANGAZİ MAHALLESİ,YAVUZ,DUMLUPINAR,İBRAHİM GALİP CADDELERİ,597,616, 597/1 SOKAKLAR VE CİVARI"
+  },
+  {
+    "StartDate": "05.10.2022 09:00",
+    "EndDate": "05.10.2022 17:00",
+    "Reason": "ŞEBEKE İŞLETMECİSİ",
+    "District": "BAYRAKLI",
+    "Region": "OSMANGAZİ MAHALLESİ,YAVUZ CADDESİ,591,592 SOKAKLAR VE CİVARI"
+  },
+  {
+    "StartDate": "05.10.2022 09:00",
+    "EndDate": "05.10.2022 17:00",
+    "Reason": "ŞEBEKE İŞLETMECİSİ",
+    "District": "BAYRAKLI",
+    "Region": "ZEYTİNLİK MAHALLESİ,592/1,592/11,592/12 592/10 - 592/9 - 592/6 -592/2 - 592/3 - 592/8 SOKAKLAR VE CİVARI"
+  }
+]
+```
+
