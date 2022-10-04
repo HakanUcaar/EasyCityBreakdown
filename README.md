@@ -175,5 +175,5 @@ Console.WriteLine(city.GeoLocation);
 Output
 lat/lng : 39.93 , 32.85
 ```
-## Pic
+#### Picture
 ![alt text for screen readers](https://github.com/HakanUcaar/EasyCityBreakdown/blob/main/GeoLocation.png?raw=true "City Center GeoLocation").
