@@ -10,10 +10,11 @@ namespace EasyCityBreakdown.Test
     {
         static void Main(string[] args)
         {
-            GetAsynchronBreakdowns();
+            //GetAsynchronBreakdowns();
             //GetBreakdowns();
             //GetCityByIpAddress();
             //GetCityByName();
+            GetCityGeoLocation();
             Console.ReadLine();
         }
 
@@ -29,7 +30,6 @@ namespace EasyCityBreakdown.Test
                 Console.WriteLine("Hiç veri bulunamadı");
             }
         }
-
         static void GetAsynchronBreakdowns()
         {
             var izmir = CityBreakdown.TurkeyAdapter.GetBreakdownsAsync<İzmir>();
@@ -44,22 +44,24 @@ namespace EasyCityBreakdown.Test
             manisa.Result.Take(2).ToList().ForEach(x => Console.WriteLine(x));
             Console.WriteLine("-----------------");
 
-            Console.WriteLine(İzmir.Information);
-            izmir.Result.Take(2).ToList().ForEach(x => Console.WriteLine(x));
+            Console.WriteLine(Aydın.Information);
+            aydın.Result.Take(2).ToList().ForEach(x => Console.WriteLine(x));
             Console.WriteLine("-----------------");
         }
-
-
         static void GetCityByIpAddress()
         {
             var city = CityBreakdown.TurkeyAdapter.FindCity(IpAddress.From(("xxx.xxx.xxx.xxx")));
             Console.WriteLine(city);                                  
         }
-
         static void GetCityByName()
         {
             var city = CityBreakdown.TurkeyAdapter.FindCity("İzmir");
             Console.WriteLine(city);
+        }
+        static void GetCityGeoLocation()
+        {
+            var city = CityBreakdown.TurkeyAdapter.FindCity("Ankara");
+            Console.WriteLine(city.GeoLocation);
         }
     }
 }
