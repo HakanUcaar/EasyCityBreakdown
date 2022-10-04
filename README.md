@@ -4,7 +4,7 @@ Turkey city breakdowns and outages.
 <details>
 	<summary>Todo</summary>
  
-  - [ ] JSON serialize
+  - [X] JSON serialize
   - [ ] Nuget package
   - [ ] Web deploy(open api)
   - [ ] Add more city
@@ -115,8 +115,7 @@ Output
 
 ### *Some Functions
 ``` csharp
-var city = CityBreakdown.TurkeyAdapter.FindCity(IpAddress.From(("xx.xxx.xxx.xx")));
-Console.WriteLine(city);   
+CityBreakdown.TurkeyAdapter.FindCity(IpAddress.From(("xxx.xxx.xxx.xxx"))).Info.ToConsole();
 
 Output
 
@@ -124,8 +123,7 @@ Output
 ```
 
 ``` csharp
-var city = CityBreakdown.TurkeyAdapter.FindCity("İzmir");
-Console.WriteLine(city);
+CityBreakdown.TurkeyAdapter.FindCity("İzmir").Info.ToConsole();
 
 Output
 
@@ -168,8 +166,7 @@ Output
 ```
 ### *City GeoLocation
 ``` csharp
-var city = CityBreakdown.TurkeyAdapter.FindCity("Ankara");
-Console.WriteLine(city.GeoLocation);
+CityBreakdown.TurkeyAdapter.FindCity("Ankara").Info.GeoLocation.ToConsole();
 ```
 ```
 Output
@@ -177,3 +174,28 @@ lat/lng : 39.93 , 32.85
 ```
 #### Picture
 ![alt text for screen readers](https://github.com/HakanUcaar/EasyCityBreakdown/blob/main/GeoLocation.png?raw=true "City Center GeoLocation").
+
+### *JSON
+``` csharp
+CityBreakdown.TurkeyAdapter.FindCity("İzmir").GetJsonBreakdowns().ToConsole();
+```
+```
+Output
+[
+  {
+    "StartDate": "2022-10-04T09:00:00",
+    "EndDate": "2022-10-04T10:00:00",
+    "Reason": "ŞEBEKE İŞLETMECİSİ",
+    "District": "KONAK",
+    "Region": "AZİZİYE MAHALLESİ,574-575-576-628-657-659-660-661-663-666-668-669-670-671-672-675-713-714-721-747-753-754-756-757 SOKAKLAR VE CİVARI"
+  },
+  {
+    "StartDate": "2022-10-04T09:00:00",
+    "EndDate": "2022-10-04T17:00:00",
+    "Reason": "OG ŞEBEKE BAKIM ÇALIŞMASI NEDENİYLE",
+    "District": "FOÇA",
+    "Region": "YENİ FOÇA FEVZİ ÇAKMAK MAHALLESİ ORUÇ REİS CADDESİ BİR BÖLÜMÜ, HİLAL, DOĞAN, ÇİNGİL, SICAKDERE, SOĞUKSU, SUSAM SOKAKLARI VE CİVARLARI"
+  }
+]
+
+```
