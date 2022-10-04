@@ -166,3 +166,14 @@ Output
 (4.10.2022 09:00:00, 4.10.2022 15:00:00, Arıza Onarım Ve Bakım Nedeniyle, KUŞADASI, DAVUTLAR MAHALLESINDE BULUNAN; CENGIZ TOPEL CADDESI, ADNAN KAHVECI CADDESI, ETE SITESI, YEŞIL CENNET TUR SITESI, SÖKE DENIZKENT SITESI, GÖKSUN SITESI, YÖREKENT SITESI, ALTINAY SITESI, AKTUNA SITESI, KARDEŞEVLER SITESI, ÖZÇELIK SITESI GENÇLIK SPOR MÜDÜRLÜĞÜ KAMPI, SENDIKA OTELI)
 -----------------
 ```
+### *City GeoLocation
+``` csharp
+var city = CityBreakdown.TurkeyAdapter.FindCity("Ankara");
+Console.WriteLine(city.GeoLocation);
+```
+```
+Output
+lat/lng : 39.93 , 32.85
+```
+## Pic
+![alt text for screen readers](https://github.com/HakanUcaar/EasyCityBreakdown/blob/main/GeoLocation.png?raw=true "City Center GeoLocation").
