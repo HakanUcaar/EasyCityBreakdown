@@ -8,8 +8,9 @@ namespace EasyCityBreakdown.Abstraction
 {
     public interface ICity
     {
-        City Info { get; set; }
+        public City Info { get; set; }
         public abstract List<Breakdown> GetBreakdowns();
-        public abstract Task<List<Breakdown>> GetBreakdownsAsync();
+        public Task<List<Breakdown>> GetBreakdownsAsync();
+        public string GetJsonBreakdowns();
     }
 }

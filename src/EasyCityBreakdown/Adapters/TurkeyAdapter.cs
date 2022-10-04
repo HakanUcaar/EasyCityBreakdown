@@ -109,5 +109,13 @@ namespace EasyCityBreakdown.Adapters
         {
             return ((ICity)Activator.CreateInstance<T>()).GetBreakdownsAsync();
         }
+        public string GetJSONBreakdowns(ICity city)
+        {
+            return city.GetJsonBreakdowns();
+        }
+        public string GetJsonBreakdowns<T>()
+        {
+            return ((ICity)Activator.CreateInstance<T>()).GetJsonBreakdowns();
+        }
     }
 }

@@ -18,22 +18,22 @@ namespace EasyCityBreakdown.Abstraction
         {
             Cities.Add(city);
         }
-        public City FindCity(IpAddress IpAdress)
+        public ICity FindCity(IpAddress IpAdress)
         {
             var client = new RestClient();
             var requestIpInfo = new RestRequest($"https://geo.ipify.org/api/v2/country,city?apiKey=at_dpm6765qoMPl5PPAIeTP4S3QSyKpv&ipAddress={IpAdress}");
             var response = JsonConvert.DeserializeObject<dynamic>(client.Get<dynamic>(requestIpInfo).ToString());
             var cityName = (string)response.location.region;
-            var city = Cities.FirstOrDefault(x => x.Info.Name == cityName)?.Info;
+            var city = Cities.FirstOrDefault(x => x.Info.Name == cityName);
             if (city is null)
             {
                 throw new CityNotFoundException();
             }
             return city;
         }
-        public City FindCity(string Name)
+        public ICity FindCity(string Name)
         {
-            var city = Cities.FirstOrDefault(x => x.Info.Name == Name)?.Info;
+            var city = Cities.FirstOrDefault(x => x.Info.Name == Name);
             if (city is null)
             {
                 throw new CityNotFoundException();
