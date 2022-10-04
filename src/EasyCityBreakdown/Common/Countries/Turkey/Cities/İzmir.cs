@@ -11,13 +11,11 @@ using System.Threading.Tasks;
 namespace EasyCityBreakdown.Common.Cities.Turkey
 {
     public class İzmir : AbstractCity
-    {
-        public readonly List<Breakdown> Breakdowns;
+    {        
         public static City Information => City.From(("İzmir", "35", GeoLocation.From((38.4127, 27.1384))));
         public İzmir()
         {
             Info = Information;
-            Breakdowns = new List<Breakdown>();
         }
         private List<Breakdown> GetElectricBreakdowns()
         {
@@ -33,10 +31,11 @@ namespace EasyCityBreakdown.Common.Cities.Turkey
                 var district = ((IEnumerable)responseDistricts.results).Cast<dynamic>().FirstOrDefault(a => a.id == item.district);
                 Breakdowns.Add(Breakdown.From((item.starts_at, item.ends_at, item.get_reason, district.name, item.manuel_zone)));
             }
-            return Breakdowns;
+            return Breakdowns.Take(Setting.Limit is 0 ? 1000 : Setting.Limit).ToList();
         }
         public override List<Breakdown> GetBreakdowns()
         {
+            Breakdowns.Clear();
             return this.GetElectricBreakdowns();
         }
     }
