@@ -12,12 +12,10 @@ namespace EasyCityBreakdown.Common.Cities.Turkey
 {
     public class Adana : AbstractCity
     {
-        public readonly List<Breakdown> Breakdowns;
         public static City Information => City.From(("Adana", "01",GeoLocation.From((37.000,35.325))));
         public Adana()
         {
             Info = Information;
-            Breakdowns = new List<Breakdown>();
         }
 
         private List<Breakdown> GetElectricBreakdowns()
@@ -74,6 +72,7 @@ namespace EasyCityBreakdown.Common.Cities.Turkey
         }
         public override List<Breakdown> GetBreakdowns()
         {
+            Breakdowns.Clear();
             return this.GetElectricBreakdowns();
         }
     }

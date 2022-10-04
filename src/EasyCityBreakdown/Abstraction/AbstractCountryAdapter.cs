@@ -11,9 +11,9 @@ namespace EasyCityBreakdown.Abstraction
 {
     public abstract class AbstractCountryAdapter: ICountryAdapter
     {
+        public Setting Setting { get; protected set; } = new Setting();
         public List<ICity> Cities { get; protected set; } = new List<ICity>();
         public List<Breakdown> Breakdowns { get; protected set; } = new List<Breakdown>();
-
         public void AddCity(ICity city)
         {
             Cities.Add(city);
@@ -40,7 +40,7 @@ namespace EasyCityBreakdown.Abstraction
             }
             return city;
         }
-        public virtual List<Breakdown> GetBreakdowns(ICity city)
+        public List<Breakdown> GetBreakdowns(ICity city)
         {
             if (!Cities.Any(x=>x == city))
             {
@@ -49,7 +49,7 @@ namespace EasyCityBreakdown.Abstraction
 
             return city.GetBreakdowns();
         }
-        public virtual Task<List<Breakdown>> GetBreakdownsAsync(ICity city)
+        public Task<List<Breakdown>> GetBreakdownsAsync(ICity city)
         {
             if (!Cities.Any(x => x == city))
             {
@@ -58,13 +58,13 @@ namespace EasyCityBreakdown.Abstraction
 
             return Task.Run(()=>city.GetBreakdowns());
         }
-        public virtual List<Breakdown> GetBreakdowns<T>() where T : ICity
+        public List<Breakdown> GetBreakdowns<T>() where T : ICity
         {
-            return new List<Breakdown>();
+            return ((ICity)Activator.CreateInstance<T>()).GetBreakdowns();
         }
-        public virtual Task<List<Breakdown>> GetBreakdownsAsync<T>() where T : ICity
+        public Task<List<Breakdown>> GetBreakdownsAsync<T>() where T : ICity
         {
-            return Task.Run(()=>new List<Breakdown>());
+            return ((ICity)Activator.CreateInstance<T>()).GetBreakdownsAsync();
         }
     }
 }
