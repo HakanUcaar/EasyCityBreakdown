@@ -78,17 +78,17 @@ Turkey city breakdowns and outages.
       - [ ] Samsun
       - [ ] Siirt
       - [ ] Sinop
-      - [ ] Sivas
+      - [X] Sivas
       - [ ] Şanlıurfa
       - [ ] Şırnak
       - [X] Tekirdağ
-      - [ ] Tokat
+      - [X] Tokat
       - [ ] Trabzon
       - [ ] Tunceli
       - [ ] Uşak
       - [ ] Van
       - [X] Yalova
-      - [ ] Yozgat
+      - [X] Yozgat
       - [X] Zonguldak    
  
 </details>
