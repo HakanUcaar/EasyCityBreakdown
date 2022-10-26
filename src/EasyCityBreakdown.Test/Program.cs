@@ -23,7 +23,7 @@ namespace EasyCityBreakdown.Test
 
         static void GetBreakdownsSample()
         {
-            var breakdowns = CityBreakdown.TurkeyAdapter.GetBreakdowns<Gaziantep>();
+            var breakdowns = CityBreakdown.TurkeyAdapter.GetBreakdowns<Aksaray>();
             if (breakdowns.Any())
             {
                 breakdowns.ForEach(x => Console.WriteLine(x));
