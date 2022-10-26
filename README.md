@@ -13,7 +13,7 @@ Turkey city breakdowns and outages.
       - [ ] Adıyaman
       - [ ] Afyonkarahisar
       - [ ] Ağrı
-      - [ ] Aksaray
+      - [X] Aksaray
       - [ ] Amasya
       - [X] Ankara
       - [X] Antalya
@@ -52,16 +52,16 @@ Turkey city breakdowns and outages.
       - [X] İzmir
       - [ ] Kahramanmaraş
       - [X] Karabük
-      - [ ] Karaman
+      - [X] Karaman
       - [ ] Kars
       - [X] Kastamonu
       - [ ] Kayseri
       - [X] Kırıkkale
       - [X] Kırklareli
-      - [ ] Kırşehir
+      - [X] Kırşehir
       - [X] Kilis
       - [X] Kocaeli
-      - [ ] Konya
+      - [X] Konya
       - [ ] Kütahya
       - [ ] Malatya
       - [X] Manisa
@@ -69,8 +69,8 @@ Turkey city breakdowns and outages.
       - [X] Mersin
       - [X] Muğla
       - [ ] Muş
-      - [ ] Nevşehir
-      - [ ] Niğde
+      - [X] Nevşehir
+      - [X] Niğde
       - [ ] Ordu
       - [X] Osmaniye
       - [ ] Rize
