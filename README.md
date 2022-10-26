@@ -9,7 +9,7 @@ Turkey city breakdowns and outages.
   - [ ] Web deploy(open api)
   - [ ] Add more city
     - [ ] Turkey
-      - [ ] Adana
+      - [X] Adana
       - [ ] Adıyaman
       - [ ] Afyonkarahisar
       - [ ] Ağrı
@@ -41,11 +41,11 @@ Turkey city breakdowns and outages.
       - [ ] Erzincan
       - [ ] Erzurum
       - [ ] Eskişehir
-      - [ ] Gaziantep
+      - [X] Gaziantep
       - [ ] Giresun
       - [ ] Gümüşhane
       - [ ] Hakkâri
-      - [ ] Hatay
+      - [X] Hatay
       - [ ] Iğdır
       - [X] Isparta
       - [ ] Istanbul
@@ -59,20 +59,20 @@ Turkey city breakdowns and outages.
       - [X] Kırıkkale
       - [X] Kırklareli
       - [ ] Kırşehir
-      - [ ] Kilis
+      - [X] Kilis
       - [X] Kocaeli
       - [ ] Konya
       - [ ] Kütahya
       - [ ] Malatya
       - [X] Manisa
       - [ ] Mardin
-      - [ ] Mersin
+      - [X] Mersin
       - [X] Muğla
       - [ ] Muş
       - [ ] Nevşehir
       - [ ] Niğde
       - [ ] Ordu
-      - [ ] Osmaniye
+      - [X] Osmaniye
       - [ ] Rize
       - [X] Sakarya
       - [ ] Samsun
