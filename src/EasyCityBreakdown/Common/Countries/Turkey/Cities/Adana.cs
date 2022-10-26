@@ -4,6 +4,7 @@ using RestSharp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,50 +22,44 @@ namespace EasyCityBreakdown.Common.Cities.Turkey
         private List<Breakdown> GetElectricBreakdowns()
         {
             var client = new RestClient();
-            var cities = new RestRequest("https://online.toroslaredas.com.tr/adres/iller?kurumKodu=7500");
-            var districts = new RestRequest("https://online.toroslaredas.com.tr/adres/ilceler?ilKodu=01");
-        
+            var districtsReq = new RestRequest("https://online.toroslaredas.com.tr/adres/ilceler?ilKodu=01");
+            var districts = JsonConvert.DeserializeObject<dynamic>(client.Get<dynamic>(districtsReq).ToString()).result.ilceListe;
 
-
-            var dateRequest = new RestRequest("https://ws.ckenerji.com.tr/kesintiAedas/Home/getDates");
-            var districtRequest = new RestRequest("https://ws.ckenerji.com.tr/kesintiAedas/Home/getSelectListValues");
-            var dates = JsonConvert.DeserializeObject<dynamic>(client.Post<dynamic>(dateRequest).ToString());
-            //var districts = JsonConvert.DeserializeObject<dynamic>(client.Post<dynamic>(districtRequest).ToString());
-            //districts = ((IEnumerable)districts.adressSelectList).Cast<dynamic>().Where(a => a.UavtCode == "15");
-            var breakdowns = new RestRequest("https://ws.ckenerji.com.tr/kesintiAedas/Home/getDates");
-
-            foreach (var date in dates)
+            foreach (var district in districts)
             {
-                var city = ((IEnumerable)districts).Cast<dynamic>().FirstOrDefault();
-                foreach (var district in city.addressList)
+                var breakdownRequest = new RestRequest("https://online.toroslaredas.com.tr/wkt-sorgulama");
+                breakdownRequest.AddParameter("Kurum", "7500");
+                breakdownRequest.AddParameter("SorguTipi", "2");
+                breakdownRequest.AddParameter("IlKodu", "01");
+                breakdownRequest.AddParameter("IlceKodu", (string)district.ilceKodu);
+                var breakdown = JsonConvert.DeserializeObject<dynamic>(client.Post<dynamic>(breakdownRequest).ToString());
+                var plannedBreakdownList = ((IEnumerable)breakdown.result.planlananKesintiListe).Cast<dynamic>();
+                var unPlannedBreakdownList = ((IEnumerable)breakdown.result.mevcutKesintiListe).Cast<dynamic>();
+                if (plannedBreakdownList.Count() > 0)
                 {
-                    var req = new
+                    foreach (var item in plannedBreakdownList)
                     {
-                        sehir = city.UavtText,
-                        ilce = district.UavtText,
-                        date = date.fullDate,
-                        fix = "",
-                        statu = "1",
-                        poligonCheck = "1",
-                        channelCheck = "MOBİLE"
-                    };
-
-                    var breakdownRequest = new RestRequest("https://ws.ckenerji.com.tr/kesintiaedas/Home/kesinti");
-                    breakdownRequest.AddParameter("sehir", (string)city.UavtText);
-                    breakdownRequest.AddParameter("ilce", (string)district.UavtText);
-                    breakdownRequest.AddParameter("date", (string)date.fullDate);
-                    breakdownRequest.AddParameter("statu", "1");
-                    breakdownRequest.AddParameter("poligonCheck", "1");
-                    breakdownRequest.AddParameter("channelCheck", "MOBİLE");
-                    var breakdown = JsonConvert.DeserializeObject<dynamic>(client.Post<dynamic>(breakdownRequest).ToString());
-                    var breakdownList = ((IEnumerable)breakdown.plannedOutageList).Cast<dynamic>();
-                    if (breakdownList.Count() > 0)
-                    {
-
-                        foreach (var item in breakdownList)
+                        DateTime startDate = startDate = DateTime.ParseExact((string)item.kesintiBaslangicTarihi, "dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture);
+                        TimeSpan? time = null;
+                        if ((string)item.kesintiBitisTarihi != "")
                         {
-                            //Breakdowns.Add(Breakdown.From((item.startDateTime, item.endDateTime, item.reason, district.UavtText, district.UavtText)));
+                            time = TimeSpan.Parse((string)item.kesintiBitisTarihi);
                         }
+
+                        Breakdowns.Add(Breakdown.From((startDate, time.HasValue ? startDate.Date.AddHours(time.Value.TotalHours) : startDate, item.kesintiNedeni, district.ilceAdi, item.etkilenenCaddeSokak)));
+                    }
+                }
+                if(unPlannedBreakdownList.Count() > 0)
+                {
+                    foreach (var item in unPlannedBreakdownList)
+                    {
+                        DateTime startDate = startDate = DateTime.ParseExact((string)item.kesintiBaslangicTarihi, "dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture);
+                        TimeSpan? time = null;
+                        if ((string)item.kesintiBitisTarihi != "")
+                        {
+                            time = TimeSpan.Parse((string)item.kesintiBitisTarihi);
+                        }
+                        Breakdowns.Add(Breakdown.From((startDate, time.HasValue ? startDate.Date.AddHours(time.Value.TotalHours) : startDate, item.kesintiNedeni, district.ilceAdi, item.etkilenenCaddeSokak)));
                     }
                 }
             }

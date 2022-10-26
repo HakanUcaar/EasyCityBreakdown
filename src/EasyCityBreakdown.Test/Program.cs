@@ -11,19 +11,19 @@ namespace EasyCityBreakdown.Test
     {
         static void Main(string[] args)
         {
-            //GetBreakdownsSample();
+            GetBreakdownsSample();
             //GetAsynchronBreakdownsSample();
             //GetCityByIpAddressSample();
             //GetCityByNameSample();
             //GeoLocationSample();
             //JsonSample();
-            SettingSample();
+            //SettingSample();
             Console.ReadLine();
         }
 
         static void GetBreakdownsSample()
         {
-            var breakdowns = CityBreakdown.TurkeyAdapter.GetBreakdowns<İzmir>();
+            var breakdowns = CityBreakdown.TurkeyAdapter.GetBreakdowns<Gaziantep>();
             if (breakdowns.Any())
             {
                 breakdowns.ForEach(x => Console.WriteLine(x));
