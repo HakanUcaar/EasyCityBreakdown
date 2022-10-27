@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace EasyCityBreakdown.Abstraction
 {
-    public interface ISetting
+    public interface IOption
     {
-        public int Limit { get; set; }
-        public string JsonDateFormat { get; set; }
+        
     }
 }
