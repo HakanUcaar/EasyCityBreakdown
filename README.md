@@ -201,8 +201,8 @@ Output
 
 ### *Setting
 ``` csharp
-CityBreakdown.TurkeyAdapter.Setting.Limit = 3;
-CityBreakdown.TurkeyAdapter.Setting.JsonDateFormat = "dd.MM.yyyy HH:mm";
+CityBreakdown.TurkeyAdapter.AddOption<JsonSetting>(option => option.JsonDateFormat = "yyyy-MM-dd");
+CityBreakdown.TurkeyAdapter.AddOption<DataSetting>(option => option.Limit = 3);
 CityBreakdown.TurkeyAdapter.FindCity("İzmir").GetJsonBreakdowns().ToConsole();
 ```
 ```
