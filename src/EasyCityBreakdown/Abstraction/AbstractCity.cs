@@ -12,34 +12,49 @@ namespace EasyCityBreakdown.Abstraction
     public abstract class AbstractCity : ICity
     {
         public readonly List<Breakdown> Breakdowns;
+        public ICountryAdapter Adapter;
         public AbstractCity()
         {
             Breakdowns = new List<Breakdown>();
         }
-        public AbstractCity(ISetting setting)
+        public AbstractCity(ICountryAdapter adapter)
         {
-            Setting = setting;
+            Adapter = adapter;
             Breakdowns = new List<Breakdown>();
         }
-        public ISetting Setting { get; set; }
         public City Info { get; set; }
-        public abstract List<Breakdown> GetBreakdowns();
+        public virtual List<Breakdown> GetBreakdowns()
+        {
+            var dataSetting = (DataSetting)Adapter.Options.FirstOrDefault(x => x.GetType() == typeof(DataSetting));
+            if (dataSetting is not null)
+            {
+                return Breakdowns.Take(dataSetting.Limit).ToList();
+            }
+            return Breakdowns;
+        }
         public virtual Task<List<Breakdown>> GetBreakdownsAsync()
         {
             return Task.Run(() => GetBreakdowns());
         }
         public string GetJsonBreakdowns()
         {
-            return JsonConvert.SerializeObject(GetBreakdowns(),Formatting.Indented, new IsoDateTimeConverter() { DateTimeFormat = Setting.JsonDateFormat });
+            var jsonSetting = (JsonSetting)Adapter.Options.FirstOrDefault(x => x.GetType() == typeof(JsonSetting));
+            if(jsonSetting is not null)
+            {
+                return JsonConvert.SerializeObject(GetBreakdowns(),Formatting.Indented, new IsoDateTimeConverter() { DateTimeFormat = jsonSetting.JsonDateFormat });
+            }
+            
+            return JsonConvert.SerializeObject(GetBreakdowns(),Formatting.Indented);
+            
         }
     }
 
     public abstract class AbstractCity<T> : AbstractCity where T : AbstractCity
     {
-        public static T New(ISetting Setting = null)
+        public static T New(ICountryAdapter adapter)
         {
             var instance = Activator.CreateInstance<T>();
-            instance.Setting = Setting;
+            instance.Adapter = adapter;
             return instance;
         }
     }

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EasyCityBreakdown.Abstraction
+namespace EasyCityBreakdown.Extensions
 {
-    public interface ICountryAdapter
+    public static class OptionsExtension
     {
-        public List<IOption> Options { get; set; }
     }
 }
