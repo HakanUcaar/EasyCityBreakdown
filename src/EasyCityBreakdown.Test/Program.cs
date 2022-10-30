@@ -70,8 +70,10 @@ namespace EasyCityBreakdown.Test
         }
         static void SettingSample()
         {
-            CityBreakdown.TurkeyAdapter.Setting.Limit = 3;
-            CityBreakdown.TurkeyAdapter.Setting.JsonDateFormat = "dd.MM.yyyy HH:mm";
+            CityBreakdown.TurkeyAdapter
+                .AddOption<JsonSetting>(option => option.JsonDateFormat = "yyyy-MM-dd")
+                .AddOption<DataSetting>(option => option.Limit = 3);
+
             CityBreakdown.TurkeyAdapter.FindCity("İzmir").GetJsonBreakdowns().ToConsole();
         }
     }

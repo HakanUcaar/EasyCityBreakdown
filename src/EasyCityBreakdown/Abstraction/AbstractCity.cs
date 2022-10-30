@@ -23,14 +23,29 @@ namespace EasyCityBreakdown.Abstraction
         }
         public ISetting Setting { get; set; }
         public City Info { get; set; }
-        public abstract List<Breakdown> GetBreakdowns();
+        public virtual List<Breakdown> GetBreakdowns()
+        {
+            var dataSetting = Adapter.GetOption<DataSetting>();
+            if (dataSetting is not null)
+            {
+                return Breakdowns.Take(dataSetting.Limit).ToList();
+            }
+            return Breakdowns;
+        }
         public virtual Task<List<Breakdown>> GetBreakdownsAsync()
         {
             return Task.Run(() => GetBreakdowns());
         }
         public string GetJsonBreakdowns()
         {
-            return JsonConvert.SerializeObject(GetBreakdowns(),Formatting.Indented, new IsoDateTimeConverter() { DateTimeFormat = Setting.JsonDateFormat });
+            var jsonSetting = Adapter.GetOption<JsonSetting>();
+            if(jsonSetting is not null)
+            {
+                return JsonConvert.SerializeObject(GetBreakdowns(),Formatting.Indented, new IsoDateTimeConverter() { DateTimeFormat = jsonSetting.JsonDateFormat });
+            }
+            
+            return JsonConvert.SerializeObject(GetBreakdowns(),Formatting.Indented);
+            
         }
     }
 
