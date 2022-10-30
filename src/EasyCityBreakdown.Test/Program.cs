@@ -11,13 +11,13 @@ namespace EasyCityBreakdown.Test
     {
         static void Main(string[] args)
         {
-            GetBreakdownsSample();
+            //GetBreakdownsSample();
             //GetAsynchronBreakdownsSample();
             //GetCityByIpAddressSample();
             //GetCityByNameSample();
             //GeoLocationSample();
             //JsonSample();
-            //SettingSample();
+            SettingSample();
             Console.ReadLine();
         }
 
@@ -65,7 +65,7 @@ namespace EasyCityBreakdown.Test
         }
         static void JsonSample()
         {
-            CityBreakdown.TurkeyAdapter.Setting.Limit = 2;
+            CityBreakdown.TurkeyAdapter.AddOption<DataSetting>(option => option.Limit = 3);
             CityBreakdown.TurkeyAdapter.FindCity("İzmir").GetJsonBreakdowns().ToConsole();            
         }
         static void SettingSample()

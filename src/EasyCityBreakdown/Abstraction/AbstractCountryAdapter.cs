@@ -4,16 +4,24 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace EasyCityBreakdown.Abstraction
 {
-    public abstract class AbstractCountryAdapter: ICountryAdapter
+    public abstract class AbstractCountryAdapter : ICountryAdapter
     {
-        public Setting Setting { get; protected set; } = new Setting();
+        public List<IOption> Options { get; set; } = new List<IOption>();
         public List<ICity> Cities { get; protected set; } = new List<ICity>();
         public List<Breakdown> Breakdowns { get; protected set; } = new List<Breakdown>();
+        public void AddOption<T>(Action<T> option) where T : IOption
+        {
+           var optInstance = Activator.CreateInstance<T>();           
+           option(optInstance);
+           Options.Add(optInstance);
+        }
         public void AddCity(ICity city)
         {
             Cities.Add(city);

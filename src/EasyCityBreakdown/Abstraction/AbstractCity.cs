@@ -12,16 +12,16 @@ namespace EasyCityBreakdown.Abstraction
     public abstract class AbstractCity : ICity
     {
         public readonly List<Breakdown> Breakdowns;
+        public ICountryAdapter Adapter;
         public AbstractCity()
         {
             Breakdowns = new List<Breakdown>();
         }
-        public AbstractCity(ISetting setting)
+        public AbstractCity(ICountryAdapter adapter)
         {
-            Setting = setting;
+            Adapter = adapter;
             Breakdowns = new List<Breakdown>();
         }
-        public ISetting Setting { get; set; }
         public City Info { get; set; }
         public virtual List<Breakdown> GetBreakdowns()
         {
@@ -51,10 +51,10 @@ namespace EasyCityBreakdown.Abstraction
 
     public abstract class AbstractCity<T> : AbstractCity where T : AbstractCity
     {
-        public static T New(ISetting Setting = null)
+        public static T New(ICountryAdapter adapter)
         {
             var instance = Activator.CreateInstance<T>();
-            instance.Setting = Setting;
+            instance.Adapter = adapter;
             return instance;
         }
     }
