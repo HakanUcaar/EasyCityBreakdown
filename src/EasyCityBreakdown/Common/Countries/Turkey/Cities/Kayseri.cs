@@ -10,7 +10,7 @@ namespace EasyCityBreakdown.Common.Cities.Turkey
     public class Kayseri : AbstractCity
     {
         public readonly List<Breakdown> Breakdowns;
-        public static City Information => City.From(("Kayseri", "36", GeoLocation.From((38.225, 35.4875))));
+        public static City Information => City.From(("Kayseri", "38", GeoLocation.From((38.225, 35.4875))));
         public Kayseri()
         {
             Info = Information;

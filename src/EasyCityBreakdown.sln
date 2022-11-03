@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyCityBreakdown", "EasyCi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyCityBreakdown.Samples", "EasyCityBreakdown.Test\EasyCityBreakdown.Samples.csproj", "{7FFED6B8-02AA-434A-919F-B61FC6797ADA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyCityBreakdown.MinimalAPI", "EasyCityBreakdown.MinimalAPI\EasyCityBreakdown.MinimalAPI.csproj", "{9E2C2BEB-8E7F-4B38-9701-E6EA5C610D61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7FFED6B8-02AA-434A-919F-B61FC6797ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FFED6B8-02AA-434A-919F-B61FC6797ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FFED6B8-02AA-434A-919F-B61FC6797ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E2C2BEB-8E7F-4B38-9701-E6EA5C610D61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E2C2BEB-8E7F-4B38-9701-E6EA5C610D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E2C2BEB-8E7F-4B38-9701-E6EA5C610D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E2C2BEB-8E7F-4B38-9701-E6EA5C610D61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

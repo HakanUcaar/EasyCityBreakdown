@@ -1,4 +1,5 @@
-﻿using EasyCityBreakdown.Exceptions;
+﻿using EasyCityBreakdown.Common.Countries.Turkey;
+using EasyCityBreakdown.Exceptions;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -47,6 +48,26 @@ namespace EasyCityBreakdown.Abstraction
                 throw new CityNotFoundException();
             }
             return city;
+        }
+        public List<Breakdown> GetBreakdowns(string plateCode)
+        {
+            var city = Cities.Find(x => x.Info.PlateCode == plateCode.ToString());
+            if (city is null)
+            {
+                throw new CityNotFoundException();
+            }
+
+            return city.GetBreakdowns();
+        }
+        public List<Breakdown> GetBreakdowns(PlateCodes plateCode)
+        {
+            var city = Cities.Find(x => x.Info.Name == plateCode.ToString());
+            if (city is null)
+            {
+                throw new CityNotFoundException();
+            }            
+
+            return city.GetBreakdowns();
         }
         public List<Breakdown> GetBreakdowns(ICity city)
         {
