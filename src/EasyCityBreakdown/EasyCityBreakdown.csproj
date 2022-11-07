@@ -1,8 +1,30 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+    <PackageProjectUrl>https://github.com/HakanUcaar/EasyCityBreakdown</PackageProjectUrl>
+    <Description>Turkey City Outages</Description>
+    <Version>0.2.1</Version>
+    <Title>EasyCityBreakdown</Title>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/HakanUcaar/EasyCityBreakdown</RepositoryUrl>
+    <PackageTags></PackageTags>
+    <Authors>Hakan Uçar</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <NeutralLanguage>tr-TR</NeutralLanguage>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />

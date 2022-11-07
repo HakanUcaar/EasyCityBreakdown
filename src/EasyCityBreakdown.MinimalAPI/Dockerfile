@@ -2,16 +2,12 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["EasyCityBreakdown.MinimalAPI/EasyCityBreakdown.MinimalAPI.csproj", "EasyCityBreakdown.MinimalAPI/"]
-RUN dotnet restore "EasyCityBreakdown.MinimalAPI/EasyCityBreakdown.MinimalAPI.csproj"
 COPY . .
-WORKDIR "/src/EasyCityBreakdown.MinimalAPI"
-RUN dotnet build "EasyCityBreakdown.MinimalAPI.csproj" -c Release -o /app/build
+RUN dotnet restore "./EasyCityBreakdown.MinimalAPI.csproj"
+RUN dotnet build "./EasyCityBreakdown.MinimalAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "EasyCityBreakdown.MinimalAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
@@ -20,3 +16,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "EasyCityBreakdown.MinimalAPI.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet EasyCityBreakdown.MinimalAPI.dll

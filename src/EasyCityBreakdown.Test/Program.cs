@@ -11,19 +11,19 @@ namespace EasyCityBreakdown.Test
     {
         static void Main(string[] args)
         {
-            //GetBreakdownsSample();
+            GetBreakdownsSample();
             //GetAsynchronBreakdownsSample();
             //GetCityByIpAddressSample();
             //GetCityByNameSample();
             //GeoLocationSample();
             //JsonSample();
-            SettingSample();
+            //SettingSample();
             Console.ReadLine();
         }
 
         static void GetBreakdownsSample()
         {
-            var breakdowns = CityBreakdown.TurkeyAdapter.GetBreakdowns<Tokat>();
+            var breakdowns = CityBreakdown.TurkeyAdapter.GetBreakdowns<Adıyaman>();
             if (breakdowns.Any())
             {
                 breakdowns.ForEach(x => Console.WriteLine(x));
@@ -73,7 +73,7 @@ namespace EasyCityBreakdown.Test
             CityBreakdown.TurkeyAdapter.AddOption<JsonSetting>(option => option.JsonDateFormat = "yyyy-MM-dd");
             CityBreakdown.TurkeyAdapter.AddOption<DataSetting>(option => option.Limit = 3);
 
-            CityBreakdown.TurkeyAdapter.FindCity("İzmir").GetJsonBreakdowns().ToConsole();
+            CityBreakdown.TurkeyAdapter.FindCity("Adıyaman").GetJsonBreakdowns().ToConsole();
         }
     }
 }

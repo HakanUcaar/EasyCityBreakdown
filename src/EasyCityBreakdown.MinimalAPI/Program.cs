@@ -28,8 +28,8 @@ builder.Services.AddSwaggerGen(gen =>
 
 var app = builder.Build();
 
-//var port = Environment.GetEnvironmentVariable("PORT");
-//app.Urls.Add("http://*:" + port);
+var port = Environment.GetEnvironmentVariable("PORT");
+app.Urls.Add("http://*:" + port);
 
 app.UseSwagger();
 app.UseSwaggerUI();
