@@ -10,7 +10,7 @@ Turkey city breakdowns and outages.
   - [ ] Add more city
     - [ ] Turkey
       - [X] Adana
-      - [ ] Adıyaman
+      - [X] Adıyaman
       - [ ] Afyonkarahisar
       - [ ] Ağrı
       - [X] Aksaray
@@ -50,7 +50,7 @@ Turkey city breakdowns and outages.
       - [X] Isparta
       - [ ] Istanbul
       - [X] İzmir
-      - [ ] Kahramanmaraş
+      - [X] Kahramanmaraş
       - [X] Karabük
       - [X] Karaman
       - [ ] Kars
