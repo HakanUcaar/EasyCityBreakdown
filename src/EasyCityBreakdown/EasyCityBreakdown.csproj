@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
     <PackageProjectUrl>https://github.com/HakanUcaar/EasyCityBreakdown</PackageProjectUrl>
     <Description>Turkey City Outages</Description>
     <Version>0.2.1</Version>
@@ -29,6 +29,7 @@
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Optionable" Version="0.2.2" />
     <PackageReference Include="RestSharp" Version="108.0.1" />
     <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="108.0.1" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using EasyCityBreakdown.Common.Countries.Turkey;
 using EasyCityBreakdown.Exceptions;
 using Newtonsoft.Json;
+using Optionable;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,9 @@ namespace EasyCityBreakdown.Abstraction
 {
     public abstract class AbstractCountryAdapter : ICountryAdapter
     {
-        public List<IOption> Options { get; set; } = new List<IOption>();
-        public List<ICity> Cities { get; protected set; } = new List<ICity>();
-        public List<Breakdown> Breakdowns { get; protected set; } = new List<Breakdown>();
+        public List<IOption> Options { get; set; } = new();
+        public List<ICity> Cities { get; protected set; } = new();
+        public List<Breakdown> Breakdowns { get; protected set; } = new();
         public void AddOption<T>(Action<T> option) where T : IOption
         {
            var optInstance = Activator.CreateInstance<T>();           
